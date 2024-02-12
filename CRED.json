@@ -1,0 +1,37 @@
+{
+    "CLIENT_ID": "amzn1.application-oa2-client.1d802a1024654646a0f746779b03b56b",
+    "CLIENT_SECRET" : "amzn1.oa2-cs.v1.9779ab7a2ce1028960aeec86f453b2f37ff91ddbf144de94ad40b9292f078599",
+    "REGIONS":{
+    "NA":{
+        
+        "REFRESH_TOKEN" : "Atzr|IwEBIDr7HrR4jw3In2ov0uzPHnLJoxJO012YJJufO04yEfNzIXZYc7KgOTent9VrcBtX2urGTukX1-YSbr3fD-Bauc2CYP5V3h933UrttUl1AHkCITKonzt42GbHAS4vBG7dhnhiiF9Q58Nb5FtOiQsy8pDel5liRg9UfoFslqoIhqnp7OxeneEDBE6g0G4vvEr1-Veo_9vVq7RIW9_NUGhmP67tZR_UQB9xGXrK8wFN-KREd5euptuh-_scZoJE_TMix8eP83VmLOo3fJV0KcU3ruJAzuVYOSG3VyXnSV6Nm3iR43r3JlaUK0SE_eNTchCF7-erf2G-sC7Umsc0iZjn53xmDfhaSwV_Z3R-7_4zny6YmLqCt30uVe9ed2vobw6nZV3Ynscg6pzYn3lQdhVnJxQW31qNZe-TCXnrQCL0hO5TzoW6dUQ4YniwNw3NdBNAjNfEb0VD14YwnuJRxctDf2HfLMTZ4MnSN8sjLYrQO6ZW3kEy-T_RJgtswK7R0KDgKZsQ9OBK7kDiKHmFuyWY102o-628-zCzhgJjL9rusz6NgQ",
+        "PROFILES": {
+            "US": "229917255141766",
+            "CA": "4248184579987958"
+        }
+
+        
+    
+    },
+    "EU":{
+        "REFRESH_TOKEN" : "Atzr|IwEBIJIE7HVnL72r0wJWQuVhk-WEij9bCg3KSY7nDlvhqcrTTsp4Y3j2SiVlvA8PSm9PpNdQGOrNvzUKTLd9w5Nc6pyKgH_2cILECbKtAM0-Lczf3uH9n7SU36e3I32obCP1u0GLDV6xw8u2dSxcpM03H0gzJxCPUw8XZE4u9zfP_XKjWi_FvsxHHEXNuX_T82-u9DQnchZeYj7rvz0Gsk9ZpyuxuvgSxxbNq52PnEtPn30F2-Z5x0nq9AEDmj5sYnCrnVymlnzZ7JNx-8CeH9vYijF_t_rjNqBhtADAWT5LyxrHihIxSptfxmRWCjXGz4jd0y4Fu3kxyL6OkURr3GwEd3gbFcgnliaFxG-PveTjSdsW18tDwlbYqgBS1WOL1qCxAilgXZ8sqfJRdiC4Gc5Z-qEnze7jMqQwmeiFF5yFe2eWtmy9VM99ttlZcPOglfH-2qKcYKRXlFQsXyYjfF7Q4VGySNuHn1IHlSBL6qSZYpI6_3-sE1abdk4A1nK7j0bveP2CLo5QOWjeebRVh4ELpXt9SApEhw9y_q-Z2MsI3r85oQ",
+        "PROFILES": {
+            "UK": "4180924444122217",
+            "DE": "3489308734332099",
+            "IT": "3150013072213336",
+            "SE": "3529306560680398",
+            "FR": "2045333138520600",
+            "ES": "4063428308125885"
+        }
+    },
+    "FA":{
+        "REFRESH_TOKEN" : "Atzr|IwEBIP6thka_V5DV8S1YKBNk53J3ttVAX_416ZDPbOzd2MauB4rfc8C4LztoFtERh8547QM-967zna8gURidcsTwzLH1xoNT32oWCComSwlqMhuHGaVQjGQuFO-D-GjXM4pNse6KsqTFYE36GNh_VX66gM6T3nwwul2iImiu5jT7wwTEQzmOVt8xhPmI0t1tC1YtZzOv4yxtCuuVrY79hmwGyBhWaEX-quyzcnE-A9Z-JLFP88DKoV_DjGHJcQW_axyHVrt_5yKnMtzOB2qyKGKVclMF3W3yq8_bCglDl1pVK1b9QeGNHTkgpLLldzkLEtA9r4ad7ibI4zeDxqL4zRoV7k-5vpQ9NiLWsi49mCsgymChsK409kUaNVh8jA-aFTHXcWOsI6v2pxYPzR-h1bOlPeUHMMIU-0GH02xAo8mJ4P3mk7Fcn1zmc0JXHtwOkfngAhKaAchFL1rETiQSIDKfkEmERN8DlxuemdNPedu97besD2n-1d8sK6iq_hLm4BcZl3rMA70Os4W-6reHtL8VPVXJ",
+        "PROFILES": {
+            "AU": "299945924737841",
+            "SG": "2107993250287623"
+        }
+    }
+
+}
+    
+}

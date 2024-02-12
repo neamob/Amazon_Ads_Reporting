@@ -1,0 +1,13 @@
+{
+    "name": "SB campaigns report",
+    "configuration": {
+        "adProduct": "SPONSORED_BRANDS",
+        "groupBy": ["campaign"],
+        "columns": ["impressions", "clicks", "cost", "campaignId","purchases", "sales","date"],
+        "reportTypeId": "sbCampaigns",
+        "timeUnit": "DAILY",
+        "format": "GZIP_JSON"
+    }
+}
+
+

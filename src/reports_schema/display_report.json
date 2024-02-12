@@ -1,0 +1,13 @@
+{
+    "name": "SD campaigns report",
+    "configuration": {
+        "adProduct": "SPONSORED_DISPLAY",
+        "groupBy": ["campaign"],
+        "columns": ["impressions", "clicks", "cost", "campaignId","purchases", "sales","date"],
+        "reportTypeId": "sdCampaigns",
+        "timeUnit": "DAILY",
+        "format": "GZIP_JSON"
+    }
+}
+
+
