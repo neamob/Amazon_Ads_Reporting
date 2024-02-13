@@ -23,13 +23,12 @@ class AmazonAdsReportingClient:
             'client_secret': self.CLIENT_SECRET,
             'refresh_token': self.REFRESH_TOKEN
         }
-        
-        response = requests.post(url, headers=headers, data=data)
-        if response.status_code == 200:
+        try:
+            response = requests.post(url, headers=headers, data=data)
             response_data = response.json()
             return response_data['access_token']
-        else:
-            print("Failed to obtain access token.")
+        except Exception as e:
+            print(f"Failed to obtain access token. {e}")
             return None
         
     def generate_headers(self):
