@@ -21,6 +21,7 @@ class BigQueryClient:
         writing_method: str,
     ) -> None:
         df['ingestion_timestamp'] = pd.Timestamp.now()
+        df = df.astype(str)
         df.columns = ["".join(e for e in col if e.isalnum()) for col in df.columns]
         try:
             to_gbq(
