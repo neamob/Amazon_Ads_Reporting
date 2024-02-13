@@ -3,7 +3,7 @@
     "configuration": {
         "adProduct": "SPONSORED_PRODUCTS",
         "groupBy": ["campaign"],
-        "columns": ["impressions", "clicks", "cost", "campaignId","purchases14d", "sales14d","date"],
+        "columns": ["impressions", "clicks", "cost", "campaignId","campaignName","purchases14d", "sales14d","date"],
         "reportTypeId": "spCampaigns",
         "timeUnit": "DAILY",
         "format": "GZIP_JSON"
