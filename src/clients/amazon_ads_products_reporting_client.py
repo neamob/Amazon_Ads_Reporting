@@ -84,7 +84,7 @@ class AmazonAdsProductsReportingClient(AmazonAdsReportingClient):
             raise Exception(f"Error checking report status: {e}")
 
     def _get_report_download_url(self) -> str:
-        check_url = f"{URL}/{self.report_id}"
+        check_url = f"{self.URL}/{self.report_id}"
         headers = self.generate_headers()
 
         try:
