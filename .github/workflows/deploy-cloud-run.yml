@@ -1,0 +1,44 @@
+name: Deploy to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Load environment variables from file
+        run: |
+          while IFS= read -r line; do
+            if [[ ! $line =~ ^# ]]; then
+              export_key="$(echo $line | cut -d ':' -f 1)"
+              export_value="$(echo $line | cut -d ':' -f 2- | xargs)"
+              echo "$export_key=$export_value" >> $GITHUB_ENV
+            fi
+          done < .github/config/env.yml
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Build and push Docker image to Google Container Registry
+        run: |
+          gcloud auth configure-docker
+          docker build -t ${{ env.IMAGE }} .
+          docker push ${{ env.IMAGE }}
+
+      - name: Deploy to Google Cloud Run
+        run: |
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --image ${{ env.IMAGE }} \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --allow-unauthenticated
