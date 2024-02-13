@@ -9,18 +9,19 @@ from src.clients.amazon_ads_products_reporting_client import AmazonAdsProductsRe
 
 from src.clients.amazon_ads_reporting_client import AmazonAdsReportingClient
 import logging
+import app as appp
 
 logging.basicConfig(level=logging.INFO)        
 # amazon_client = AmazonAdsReportingClient(region="NA",profile="US")
 # print(amazon_client.profile)
 # print(amazon_client.PROFILE_ID)
 # print(amazon_client.generate_headers())
+
 app = FastAPI()
 
-app.include_router(router=app.router, tags=["Amazon Ads Reporting"])
-
-if __name__ == "__    main__":
+app.include_router(appp.router)
     
+if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 
 # amazon_client_report = AmazonAdsProductsReportingClient(region="NA",profile="US",report__start_date="2024-01-01",report_end_date="2024-01-31",schema_file="display_report.json").get_report()
