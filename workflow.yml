@@ -1,0 +1,69 @@
+# Workflow: eu_region_workflow_uk
+main:
+  params: [args]
+  steps:
+  - initVariables:
+      assign:
+        - endpoint: "https://amazon-ads-service-3n2cb4sa3q-nw.a.run.app/get_ads_report"
+        - content_type: "application/json"
+  - parallelSteps:
+      parallel:
+        branches:
+          - deBrandReport:
+          
+              steps:
+              - callAPI_uk_Brand:
+                  call: http.post
+                  args:
+                    url: ${endpoint}
+                    headers:
+                      Content-Type: ${content_type}
+                    body:
+                      region: "EU"
+                      profile: "UK" # Adjusted for DE profile
+                      report__start_date: "2024-01-01"
+                      report_end_date: "2024-01-31"
+                      schema_file: "brand_report.json"
+                      project_id: "focus-sweep-394015"
+                      dataset_id: "bronze"
+                      table_id: "amazon_ads_brand_campaigns_uk" # Prefix adjusted for DE
+                      writing_method: "append"
+                    timeout: 1200 
+          - deDisplayReport:
+              steps:
+              - callAPI_uk_Display:
+                  call: http.post
+                  args:
+                    url: ${endpoint}
+                    headers:
+                      Content-Type: ${content_type}
+                    body:
+                      region: "EU"
+                      profile: "UK" # Adjusted for DE profile
+                      report__start_date: "2024-01-01"
+                      report_end_date: "2024-01-31"
+                      schema_file: "display_report.json"
+                      project_id: "focus-sweep-394015"
+                      dataset_id: "bronze"
+                      table_id: "amazon_ads_display_campaigns_uk" # Prefix adjusted for DE
+                      writing_method: "append"
+                    timeout: 1200
+          - deProductReport:
+              steps:
+              - callAPI_uk_Product:
+                  call: http.post
+                  args:
+                    url: ${endpoint}
+                    headers:
+                      Content-Type: ${content_type}
+                    body:
+                      region: "EU"
+                      profile: "UK" # Adjusted for DE profile
+                      report__start_date: "2024-01-01"
+                      report_end_date: "2024-01-31"
+                      schema_file: "product_report.json"
+                      project_id: "focus-sweep-394015"
+                      dataset_id: "bronze"
+                      table_id: "amazon_ads_product_campaigns_uk" # Prefix adjusted for DE
+                      writing_method: "append"
+                    timeout: 1200

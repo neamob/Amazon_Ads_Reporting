@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 from src.clients.amazon_reporting_helpers import load_report_schema
 from src.clients.amazon_ads_reporting_client import AmazonAdsReportingClient
-URL = "https://advertising-api.amazon.com/reporting/reports"
+
 
 
 class AmazonAdsProductsReportingClient(AmazonAdsReportingClient):
@@ -16,7 +16,12 @@ class AmazonAdsProductsReportingClient(AmazonAdsReportingClient):
         self.report_start_date = report__start_date
         self.report_end_date = report_end_date
         self.schema = schema_file
-        
+        if self.region=='EU':
+            self.URL = "https://advertising-api-eu.amazon.com/reporting/reports"
+        elif self.region=='NA':
+             self.URL = "https://advertising-api.amazon.com/reporting/reports"
+        elif self.region=='FA':
+              self.URL = "https://advertising-api-fe.amazon.com/reporting/reports"
     
     def __create_report(self,) -> str:
         #create report_schema
@@ -26,12 +31,13 @@ class AmazonAdsProductsReportingClient(AmazonAdsReportingClient):
         
         headers = self.generate_headers()
         try:
-            response = requests.post(URL, headers=headers, data=json.dumps(data))
-            print(response.text)
+            response = requests.post(self.URL, headers=headers, data=json.dumps(data))
+            
         
             return response.json()["reportId"]
         except Exception as e:
             self.logger.error(f"Failed to create report: {e}")
+            print(response.text)
             raise Exception("Failed to create report")
     
     def _retrieve_report(self, report_url:str) -> pd.DataFrame:
@@ -66,7 +72,7 @@ class AmazonAdsProductsReportingClient(AmazonAdsReportingClient):
             raise Exception(f"Failed to download the report{report_url} {e}")
         
     def _check_report_status(self, report_id: str) -> str:
-        check_url = f"{URL}/{report_id}"  # Adjust this URL to the correct endpoint
+        check_url = f"{self.URL}/{report_id}"  # Adjust this URL to the correct endpoint
         headers = self.generate_headers()
 
         try:
