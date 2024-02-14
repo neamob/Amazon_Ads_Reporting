@@ -1,3 +1,4 @@
+import time
 from google.cloud import bigquery
 import logging
 from google.api_core.exceptions import InvalidArgument, NotFound, PermissionDenied
@@ -23,16 +24,24 @@ class BigQueryClient:
         df['ingestion_timestamp'] = pd.Timestamp.now()
         df = df.astype(str)
         df.columns = ["".join(e for e in col if e.isalnum()) for col in df.columns]
-        try:
-            to_gbq(
-                df,
-                f"{dataset_id}.{table_id}",
-                project_id=project_id,
-                if_exists=writing_method,
-                chunksize=10000,
-            )
-            bq_logger = logging.getLogger("BigQuery Logger")
-            bq_logger.info("data has been loaded succefully")
-
-        except Exception as e:
-            raise ("Something went wrong with uploading data to BQ!")
+        bq_logger = logging.getLogger("BigQuery Logger")
+        max_retries = 3
+        sleep_time = 20 
+        for attempt in range(max_retries):
+            try:
+                to_gbq(
+                    df,
+                    f"{dataset_id}.{table_id}",
+                    project_id=project_id,
+                    if_exists=writing_method,
+                    chunksize=10000,
+                )
+                bq_logger.info("Data has been loaded successfully")
+                break  # Exit the loop on success
+            except Exception as e:
+                bq_logger.warning(f"Attempt {attempt + 1} failed: {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(sleep_time)  # Wait before the next attempt
+                else:
+                    bq_logger.error("All attempts to upload data to BQ failed!")
+                    raise Exception("Something went wrong with uploading data to BQ!") from e
