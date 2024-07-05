@@ -63,9 +63,7 @@ async def get_ads_report(report_body:AmazonReportBody):
         date = convert_date(report_body.report__start_date)
         # Now call get_report() which uses the updated start date
         client = AmazonAdsV2ReportingClient(region=report_body.region,profile=report_body.profile,report__start_date=date,report_end_date=report_body.report_end_date,schema_file=report_body.schema_file)
-        print("created a client!")
         report = await client.get_report()
-        print(report.head())
         if report is not None and not report.empty:
             BigQueryClient(project_id=report_body.project_id).bq_table_from_df(df = report,project_id=report_body.project_id,dataset_id=report_body.dataset_id,table_id=report_body.table_id,writing_method=report_body.writing_method)
 
