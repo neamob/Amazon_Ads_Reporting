@@ -8,6 +8,8 @@ class AmazonAdsReportingClient:
         self.profile = profile
         self.region = region
         credentials = SecretManagerClient().get_secret_value()
+       
+            
         self.CLIENT_ID = credentials["CLIENT_ID"]
         self.CLIENT_SECRET = credentials["CLIENT_SECRET"]
         self.REFRESH_TOKEN = credentials["REGIONS"][region]["REFRESH_TOKEN"]
